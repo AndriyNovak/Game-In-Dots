@@ -1,0 +1,107 @@
+@mixin padding_margin ($pad,$marg){
+  padding: $pad;
+  margin: $marg;
+}
+@mixin text__size-weight-family-color ($size,$weight,$family,$color){   
+  font-size: $size ;  
+  font-weight: $weight;
+  font-family:$family;
+  color:$color;   
+  
+  vertical-align: baseline;
+}
+@mixin flex ($aligin,$justify,$direction,$wrap_nowrap){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: $aligin;
+  -ms-flex-align: $aligin;
+  align-items: $aligin;
+  -webkit-box-pack: $justify;
+  -ms-flex-pack: $justify;
+  justify-content: $justify;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+  -ms-flex-wrap: $wrap_nowrap;
+  flex-wrap: $wrap_nowrap;
+}
+
+body{
+  // @include flex(center,flex-start,column, nowrap);
+  
+}
+*{
+  @include padding_margin(0,0) ;
+  box-sizing: border-box;
+}
+#main-wrap{
+  width: 100%;
+  @include flex(center,center,row, wrap);
+  .main{
+    @include flex(flex-start,flex-start,row, wrap);
+    border: 2px solid gray;
+    width: 100%;
+    .wrapper{
+      @include padding_margin(20px,0) ;
+    }
+  }
+  .leader{
+    // @include flex(center,flex-start,row, wrap);
+    @include padding_margin(20px,0) ;
+    min-height:620px ;
+    border-left: 2px solid gray;
+    width: 400px;
+  }
+}
+.mode{
+  @include padding_margin(0,10px) ;
+  @include flex(flex-start,center,row, nowrap);
+  .selectMode{
+
+  }
+}
+.field{
+  @include padding_margin(20px 0 0 0,3%) ;
+  @include flex(center,center,column, nowrap);
+  // @include flex(flex-start,center,row, wrap); не можна використовувати юбо зібється табличка
+  // border: 3px solid gray;
+  
+
+}
+
+.setBlueColor{
+  background: blue;
+}
+.setRedColor{
+  background: red;
+}
+.setGreenColor{
+  background: green;
+}
+.block-field{
+  @include padding_margin(0,0) ;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 1px solid grey;
+  &:hover{
+    border: 1px solid blue;
+    
+    opacity: 0.5;
+  }
+}
+.showWinners{
+  @include flex(center,flex-start,row, nowrap);
+  p{
+    @include padding_margin(5px,0) ;
+  }
+  p.winner{
+    min-width: 100px;
+  }
+}
+
+.btnPlay{
+  width: 280px !important;
+}
